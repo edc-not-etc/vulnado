@@ -8,6 +8,6 @@ ENV SHIFTLEFT_ACCESS_TOKEN=...
 
 COPY . .
 
-RUN  sl analyze --wait --app vulnado --java .
+RUN  /usr/local/bin/sl analyze --wait --app vulnado --java .
 CMD ["mvn", "spring-boot:run"]
 
