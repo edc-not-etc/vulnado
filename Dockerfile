@@ -6,6 +6,6 @@ RUN apt-get update && \
     curl https://cdn.shiftleft.io/download/sl > sl && chmod a+rx sl
 COPY . .
 
-RUN  sl analyze --wait --app vulnado --tag branch=${{ github.head_ref }} --java .
+RUN  sl analyze --wait --app vulnado --java .
 CMD ["mvn", "spring-boot:run"]
 
