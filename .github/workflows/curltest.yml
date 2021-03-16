@@ -30,4 +30,4 @@ jobs:
         env:
           SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
         run: | 
-          curl "https://www.shiftleft.io/api/v4/orgs/e5137f0b-386a-40f9-b16f-8a6088f398b4/apps/vulnado/findings" -H "Authorization: Bearer '$SHIFTLEFT_ACCESS_TOKEN'" | jq -r '.response.findings[]' | jq  '.id + ":" + " " + .title'
+          curl "https://www.shiftleft.io/api/v4/orgs/e5137f0b-386a-40f9-b16f-8a6088f398b4/apps/vulnado/findings" -H "Authorization: Bearer $SHIFTLEFT_ACCESS_TOKEN" | jq -r '.response.findings[]' | jq  '.id + ":" + " " + .title'
