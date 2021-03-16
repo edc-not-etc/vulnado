@@ -11,5 +11,5 @@ COPY . /vulnado/src
 ARG TARGET=/vulnado/target
 #CMD ["mvn", "spring-boot:run"]
 RUN mvn --batch-mode clean package
-COPY --from=build ${TARGET}/vulnado-0.0.1-SNAPSHOT.jar /vulnado/vulnado-0.0.1-SNAPSHOT.jar
+COPY ${TARGET}/vulnado-0.0.1-SNAPSHOT.jar /vulnado/vulnado-0.0.1-SNAPSHOT.jar
 CMD  /usr/local/bin/sl analyze --wait --app vulnado-0.0.1-SNAPSHOT.jar --java /vulnado/vulnado-0.0.1-SNAPSHOT.jar
