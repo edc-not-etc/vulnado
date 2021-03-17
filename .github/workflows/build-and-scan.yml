@@ -4,9 +4,11 @@
 name: ShiftLeft
 
 on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
   pull_request:
-  workflow_dispatch:
-
+    branches: [ master ]
 jobs:
   NextGen-Static-Analysis:
     runs-on: ubuntu-latest
@@ -39,4 +41,4 @@ jobs:
       env:
         SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
       run: | 
-        curl "https://www.shiftleft.io/api/v4/orgs/e5137f0b-386a-40f9-b16f-8a6088f398b4/apps/vulnado/findings" -H "Authorization: Bearer $SHIFTLEFT_ACCESS_TOKEN" | jq -r '.response.findings[]' | jq -r '.id + ":" + " " + .title' | tail -r
+        curl "https://www.shiftleft.io/api/v4/orgs/e5137f0b-386a-40f9-b16f-8a6088f398b4/apps/vulnado/findings" -H "Authorization: Bearer $SHIFTLEFT_ACCESS_TOKEN" | jq -r '.response.findings[]' | jq -r '.id + ":" + " " + .title' | tac
